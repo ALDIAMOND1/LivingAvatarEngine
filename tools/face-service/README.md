@@ -14,9 +14,9 @@
 | A full live call with OpenAI voice, interrupting her, ending a call | wired, **not yet tested** |
 | English lip accuracy by ear | **not judged** (the voice model was trained on Chinese speech) |
 
-## The default mode: 3D head, video mouth — `live.html?mouth=video`
+## Experiment (not the default): 3D head, video mouth — `live.html?mouth=video`
 
-This is what `START_LIVE.cmd` opens. The 3D head, the behaviour engine and all of her head, eye, brow and shoulder movement are exactly as before. Only the mouth is different: the drawn mouth shapes are switched off, and while she speaks the mouth made by her trained video model is laid over her lips (`src/live/hybrid-stage.js`). The service sends just the 256x256 mouth square ("patch" mode); the page pins it to the head's own lip-corner, upper-lip and chin points every frame, so it turns, tilts and nods with her, and blends it in through a soft-edged oval. When she is quiet the patch fades out and the 3D face is untouched.
+**Rejected on 2026-11-23: the mouth looked worse in conversation than the drawn one. `START_LIVE.cmd` opens plain `live.html` again.** What follows describes the experiment as built. The 3D head, the behaviour engine and all of her head, eye, brow and shoulder movement are exactly as before. Only the mouth is different: the drawn mouth shapes are switched off, and while she speaks the mouth made by her trained video model is laid over her lips (`src/live/hybrid-stage.js`). The service sends just the 256x256 mouth square ("patch" mode); the page pins it to the head's own lip-corner, upper-lip and chin points every frame, so it turns, tilts and nods with her, and blends it in through a soft-edged oval. When she is quiet the patch fades out and the 3D face is untouched.
 
 Checked on 2026-11-23 with the test speech clip: the mouth stays on her lips across different head positions and changes shape with the speech. Not yet checked: a real conversation, interruption, and how it looks at strong head turns. The fit (`FIT` in `hybrid-stage.js`: width, height, up, feather, tone) was set by eye and can be adjusted.
 

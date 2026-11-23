@@ -10,7 +10,7 @@ if errorlevel 1 (
   start "Live avatar server" /D "%~dp0" cmd.exe /k node tools\start-live.mjs "%KEYFILE%" "%SIMLIFILE%"
   timeout /t 8 /nobreak >nul
 )
-rem The 3D head with its behaviour engine, and her trained video mouth laid over the lips.
-rem Other modes: live.html (3D head, drawn mouth) and live.html?character=video (flat video face).
-start "" "http://127.0.0.1:8766/live.html?mouth=video"
+rem Nia as she was before the mouth experiments: the 3D head with its behaviour engine and its own mouth.
+rem The experiments stay available only by address: live.html?mouth=video and live.html?character=video.
+start "" "http://127.0.0.1:8766/live.html"
 endlocal
