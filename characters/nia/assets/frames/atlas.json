@@ -1,0 +1,92 @@
+{
+ "width": 450,
+ "height": 600,
+ "box": [
+  139,
+  304,
+  207,
+  163
+ ],
+ "shapes": {
+  "neutral": {
+   "file": "shape_neutral.png",
+   "open": 0.023,
+   "wide": 1.0
+  },
+  "MB": {
+   "file": "shape_MB.png",
+   "open": 0.028,
+   "wide": 0.99
+  },
+  "P": {
+   "file": "shape_P.png",
+   "open": 0.021,
+   "wide": 0.931
+  },
+  "A": {
+   "file": "shape_A.png",
+   "open": 0.705,
+   "wide": 0.993
+  },
+  "E": {
+   "file": "shape_E.png",
+   "open": 0.196,
+   "wide": 1.304
+  },
+  "O": {
+   "file": "shape_O.png",
+   "open": 0.318,
+   "wide": 0.748
+  },
+  "U": {
+   "file": "shape_U.png",
+   "open": 0.138,
+   "wide": 0.78
+  },
+  "S": {
+   "file": "shape_S.png",
+   "open": 0.184,
+   "wide": 1.215
+  },
+  "V": {
+   "file": "shape_V.png",
+   "open": 0.073,
+   "wide": 1.151
+  },
+  "F": {
+   "file": "shape_F.png",
+   "open": 0.107,
+   "wide": 1.181
+  },
+  "T": {
+   "file": "shape_T.png",
+   "open": 0.164,
+   "wide": 1.155
+  },
+  "H": {
+   "file": "shape_H.png",
+   "open": 0.527,
+   "wide": 1.001
+  },
+  "smile": {
+   "file": "shape_smile.png",
+   "open": 0.048,
+   "wide": 1.22
+  },
+  "grin": {
+   "file": "shape_grin.png",
+   "open": 0.212,
+   "wide": 1.498
+  },
+  "laugh": {
+   "file": "shape_laugh.png",
+   "open": 0.375,
+   "wide": 1.471
+  },
+  "sharp": {
+   "file": "shape_sharp.png",
+   "open": 0.05,
+   "wide": 0.937
+  }
+ }
+}

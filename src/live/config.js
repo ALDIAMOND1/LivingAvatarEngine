@@ -25,6 +25,14 @@ export const characters = {
       mouthGain: 1,        // how wide the mouth opens for a given sound
     },
   },
+  // Nia from her real frames (live.html?character=frames): her portrait, with her mouth taken from real
+  // pictures of her making each speech shape. Browser only, no graphics card, no helper program.
+  frames: {
+    name: 'Nia',
+    note: 'Her real frames: each mouth shape is a real picture of her.',
+    renderer: 'frames',
+    avatar: { frames: './characters/nia/assets/frames' },
+  },
   // Video face made on this computer's processor by the local face service
   // (live.html?character=video): real video frames of Nia with the mouth
   // repainted by her own trained model (tools/face-service/nia_service.py).
