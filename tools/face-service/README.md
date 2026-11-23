@@ -21,7 +21,9 @@
 - `measure.py` — plays a wav to the running service in real time and prints frames per second delivered and the delay the picture needs.
 - `src/live/video-stage.js` — the page side. It first times the real path ("getting her ready"), then holds her voice back by exactly that long and shows each frame when its sound is heard, so voice and lips stay together. The Start buttons stay disabled until this is done.
 
-The avatar lives in `characters/nia/assets/video/`: 250 resting frames (10 s of her idling, played forward and backward), their face points, her own mouth model `feathertalk_144.onnx` (21 MB) and the shared voice model `feather_hubert.onnx` (13 MB).
+The avatar lives in `characters/nia/assets/video/`: all 5,603 frames of her training video at display size (`footage_NN.pack` + `footage.json`, built by `build_pack.py`), her own mouth model `feathertalk_144.onnx` (21 MB) and the shared voice model `feather_hubert.onnx` (13 MB).
+
+While she is quiet the picture wanders through her 10 s of resting footage; while she speaks it plays footage of her speaking, so her head and brows move as they do when she talks. Each change picks a frame where her head is in nearly the same place and cross-fades over a quarter of a second, and a slow sway is added so no stretch plays back identically. Her mouth is blended in through a soft-edged oval from under the nose to the chin; every pixel outside it is her real footage.
 
 ## Running it on another PC
 
@@ -46,7 +48,7 @@ Whole rental: 54 minutes, 63.99 Higgsfield credits. Another avatar is the same f
 
 - Her mouth is drawn at 144x144 pixels and scaled up, so it is slightly soft in close-up. At the size shown on the page it holds up.
 - Her video comes from a generated talking video, so the mouth can only be as good as that video was.
-- Head movement, blinks and breathing come from her 10-second resting clip, not from this project's behaviour engine. Emotions and gestures from the conversation are not shown in this mode yet.
+- Head and brow movement while speaking comes from footage of her saying other things, so it is natural but not tied to the meaning of what she is saying now, and it is milder than Nuance's. Her resting footage is only 10 s long. Emotions and gestures from the conversation are not shown in this mode yet.
 - Her replies are heard about one second after they arrive, which is the price of exact lip sync with models that look ahead in the sound.
 
 `face_service.py` is the earlier LiteAvatar experiment (sample avatar only, too slow live on this PC); it is kept for reference and is no longer started by the launcher.
