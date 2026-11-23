@@ -14,9 +14,10 @@ TOKENS_PER_FRAME = 2          # the voice model gives 50 feature rows a second; 
 HALF = 10                     # the mouth model looks at 10 frames of sound either side of the frame it draws
 CROP, INNER, BORDER, GEO = 152, 144, 4, 160
 MASK_RECT = (5, 5, 150, 145)
-# Face points (98-point layout): jaw line 0-32 with the chin at 16, nose base 57, mouth 76-95.
-CHIN, NOSE_BASE, MOUTH = 16, 57, slice(76, 96)
-POSE_POINTS = [0, 8, 16, 24, 32, 51, 54, 57, 60, 64, 68, 72]   # enough to compare two frames' head position
+# Face points (110-point layout, checked by drawing them on her face): jaw line 0-32 with the chin at 16,
+# nose base 60, outer lips 90-101 (corners 90 and 96, upper middle 93, lower middle 99), inner lips 102-109.
+CHIN, NOSE_BASE, MOUTH = 16, 60, slice(90, 110)
+POSE_POINTS = [0, 8, 16, 24, 32, 51, 54, 60, 66, 70, 82, 78]   # enough to compare two frames' head position
 
 
 def _session(path, threads):
@@ -79,6 +80,30 @@ class Avatar:
         region = img[ry:ry + side, rx:rx + side].astype(np.float32)
         img[ry:ry + side, rx:rx + side] = np.clip(up * a + region * (1 - a), 0, 255).astype(np.uint8)
         return img
+
+
+    # ---- mouth only, for laying over another renderer's head -----------------
+
+    PATCH = 256
+
+    def patch_info(self, i):
+        """Where things are inside the square mouth patch of footage frame `i` (in patch pixels)."""
+        x1, y1, x2, _ = self.box(i); k = CROP / (x2 - x1); z = self.PATCH / INNER
+        p = ((self.points[i] - (x1, y1)) * k - BORDER) * z
+        pick = lambda n: [round(float(p[n][0]), 1), round(float(p[n][1]), 1)]
+        return dict(size=self.PATCH, cornerA=pick(90), cornerB=pick(96), upper=pick(93), lower=pick(99), chin=pick(CHIN), noseBase=pick(NOSE_BASE))
+
+    def patch(self, i, img, window):
+        """The repainted mouth square of footage frame `i` for this moment of sound, 256x256 BGR."""
+        x1, y1, x2, y2 = self.box(i); w = x2 - x1
+        crop = cv2.resize(img[y1:y2, x1:x2], (CROP, CROP), interpolation=cv2.INTER_AREA if w > CROP else cv2.INTER_LINEAR)
+        inner = crop[BORDER:BORDER + INNER, BORDER:BORDER + INNER]
+        masked = cv2.rectangle(inner.copy(), self.rect, (0, 0, 0), -1)
+        chw = lambda a: a.transpose(2, 0, 1).astype(np.float32) / 255.0
+        pred = self.visual.run(None, {'input': np.concatenate([chw(inner), chw(masked)])[None], 'audio': window[None].astype(np.float32)})[0][0].transpose(1, 2, 0) * 255.0
+        up = cv2.resize(pred, (self.PATCH, self.PATCH), interpolation=cv2.INTER_CUBIC)
+        up = cv2.addWeighted(up, 1.7, cv2.GaussianBlur(up, (0, 0), 2.0), -0.7, 0)
+        return np.clip(up, 0, 255).astype(np.uint8)
 
 
 def window_at(feats, frame):

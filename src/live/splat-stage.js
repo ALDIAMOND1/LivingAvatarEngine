@@ -66,7 +66,7 @@ export class SplatStage extends EventTarget {
     // Voice goes to the lip-sync directly and to the speakers after a short
     // delay, so the mouth and the sound line up.
     this.speechBus = new GainNode(ctx);
-    this.delay = new DelayNode(ctx, { delayTime: lipsync.playbackDelaySec, maxDelayTime: 2 });
+    this.delay = new DelayNode(ctx, { delayTime: lipsync.playbackDelaySec, maxDelayTime: 3 });
     this.speechBus.connect(this.delay).connect(ctx.destination);
     // Preferred mouth driver: a neural audio-to-face model. It loads in the
     // background (a large one-time download); until it is ready, or if this
@@ -180,6 +180,7 @@ export class SplatStage extends EventTarget {
     const muted = now < this.mutedUntil;
     const modelled = muted ? null : this.w2a?.frame(now);
     let target = modelled;
+    if (this.externalMouth) target = {};        // a video mouth is laid over the lips instead (hybrid-stage.js)
     if (!target) {
       target = this.speaking ? visemesToArkit(this.visemes, {}, this.character.avatar.mouthGain ?? 1) : {};
       // Loudness adds a little jaw movement so the mouth never sits still while sound is playing.

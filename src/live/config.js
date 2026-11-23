@@ -69,6 +69,8 @@ export async function pickCharacter(search = globalThis.location?.search ?? '') 
   const base = characters[params.get('character')] ?? characters.photoreal;
   const url = params.get('avatar');
   if (params.get('faceId') && base.renderer === 'simli') base.avatar = { ...base.avatar, faceId: params.get('faceId') };
+  // live.html?mouth=video keeps the 3D head and its behaviour, and lays her trained video mouth over the lips.
+  if (params.get('mouth') === 'video' && base.renderer === 'splat') base.renderer = 'hybrid';
   if (params.get('lipsync') === 'model') base.avatar = { ...base.avatar, lipsync: 'model' };
   if (url) return { ...base, avatar: { ...base.avatar, url } };
   if (base === characters.photoreal) {

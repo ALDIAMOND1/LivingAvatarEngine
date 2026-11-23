@@ -7,7 +7,8 @@ const $ = id => document.getElementById(id);
 const character = await pickCharacter();
 // The renderer is chosen by the character: 'splat' is the photoreal head,
 // 'rig' the stylised stand-in. Both expose the same stage interface.
-const { Stage } = character.renderer === 'splat' ? { Stage: (await import('./splat-stage.js')).SplatStage }
+const { Stage } = character.renderer === 'hybrid' ? { Stage: (await import('./hybrid-stage.js')).HybridStage }
+  : character.renderer === 'splat' ? { Stage: (await import('./splat-stage.js')).SplatStage }
   : character.renderer === 'video' ? { Stage: (await import('./video-stage.js')).VideoStage }
   : character.renderer === 'simli' ? { Stage: (await import('./simli-stage.js')).SimliStage }
   : { Stage: (await import('./avatar-stage.js')).AvatarStage };

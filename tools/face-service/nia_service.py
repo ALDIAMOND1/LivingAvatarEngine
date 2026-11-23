@@ -7,6 +7,7 @@
 #
 # Protocol (WebSocket, one page at a time, local only) — same as face_service.py:
 #   page -> service   binary: 16 kHz mono 16-bit sound, continuously (silence included)
+#                     text "mode:patch": send only the repainted mouth square (for laying over the 3D head)
 #                     text "reset": she was interrupted, treat what is buffered as silence
 #   service -> page   text  {"type":"hello", fps, width, height, latency}
 #                     binary: uint32 frame number, float64 time of the sound this frame
@@ -43,8 +44,11 @@ first_jpg = cv2.imencode('.jpg', av.base(_probe.rest[0]), JPEG)[1].tobytes()
 # Measure this computer once, so the page knows how much head start the picture needs.
 _f = np.zeros((2 * HALF * TOKENS_PER_FRAME, 1024), np.float32)
 av.speak(av.base(300), 300, _f); t0 = time.perf_counter()
+PATCH_AT = _probe.rest[0]; PATCH_IMG = av.base(PATCH_AT); PATCH_INFO = av.patch_info(PATCH_AT)
 def draw(job):
     k, img, window, M = job
+    if M is None:                              # patch mode: nothing to send while she is quiet
+        return cv2.imencode('.jpg', av.patch(k, img, window), [cv2.IMWRITE_JPEG_QUALITY, 90])[1].tobytes() if window is not None else b''
     if window is not None: av.speak(img, k, window)
     return cv2.imencode('.jpg', cv2.warpAffine(img, M, av.size, flags=cv2.INTER_LINEAR, borderMode=cv2.BORDER_REPLICATE), JPEG)[1].tobytes()
 for i in range(3): list(pool.map(draw, [(*_probe.next(True), _f, _probe.sway()) for _ in range(3)]))      # warm up
@@ -59,7 +63,7 @@ print(f'face service: {av.n} footage frames at {av.size[0]}x{av.size[1]}; {frame
 
 class Session:
     def __init__(self, send):
-        self.send, self.q, self.alive = send, queue.Queue(), True
+        self.send, self.q, self.alive, self.patch = send, queue.Queue(), True, False
         threading.Thread(target=self.run, daemon=True).start()
 
     def run(self):
@@ -75,6 +79,7 @@ class Session:
             while not self.q.empty(): items.append(self.q.get())
             for item in items:
                 if item is None: return
+                if item == 'mode:patch': self.patch = True; continue
                 if isinstance(item, str):            # interrupted: everything still waiting becomes silence
                     audio[:] = 0
                     for r in list(feats): feats[r] = None
@@ -116,6 +121,11 @@ class Session:
                     behind = (received - frame * 640) / SR > LATENCY + 0.6        # this computer is not keeping up
                     if behind and frame % 2: frame += 1; continue                  # draw every other frame until caught up
                     active = any(x is not None for x in rows)                      # her voice is somewhere in this frame's window
+                    if self.patch:                                                 # mouth square only, always on the same front-facing frame
+                        jobs.append((PATCH_AT, PATCH_IMG, np.stack([x if x is not None else np.zeros(1024, np.float32) for x in rows]) if active else None, None))
+                        heads.append(struct.pack('<IdI', frame & 0xffffffff, frame / FPS, 1 if speaking else 0)); frame += 1
+                        for r in range(r0 - 4, r0): feats.pop(r, None); voiced.pop(r, None)
+                        continue
                     k, img = footage.next(active)
                     jobs.append((k, img, np.stack([x if x is not None else np.zeros(1024, np.float32) for x in rows]) if active else None, footage.sway()))
                     heads.append(struct.pack('<IdI', frame & 0xffffffff, frame / FPS, 1 if speaking else 0))
@@ -131,7 +141,7 @@ async def handler(ws):
     session = Session(lambda data: asyncio.run_coroutine_threadsafe(ws.send(data), loop))
     try:
         await ws.send(json.dumps({'type': 'hello', 'fps': FPS, 'width': av.size[0], 'height': av.size[1],
-                                  'frameMs': round(frame_ms), 'latency': round(LATENCY, 3), 'avatar': 'Nia'}))
+                                  'frameMs': round(frame_ms), 'latency': round(LATENCY, 3), 'avatar': 'Nia', 'patch': PATCH_INFO}))
         await ws.send(struct.pack('<IdI', 0, -1.0, 0) + first_jpg)
         async for msg in ws: session.q.put(msg)
     except websockets.ConnectionClosed: pass

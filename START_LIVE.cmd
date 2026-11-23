@@ -10,6 +10,7 @@ if errorlevel 1 (
   start "Live avatar server" /D "%~dp0" cmd.exe /k node tools\start-live.mjs "%KEYFILE%" "%SIMLIFILE%"
   timeout /t 8 /nobreak >nul
 )
-rem Nia's video face. For the older 3D head use live.html without "?character=video".
-start "" "http://127.0.0.1:8766/live.html?character=video"
+rem The 3D head with its behaviour engine, and her trained video mouth laid over the lips.
+rem Other modes: live.html (3D head, drawn mouth) and live.html?character=video (flat video face).
+start "" "http://127.0.0.1:8766/live.html?mouth=video"
 endlocal
