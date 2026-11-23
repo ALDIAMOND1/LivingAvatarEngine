@@ -1,0 +1,10 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {AvaMotion} from '../src/ava-motion.js';
+const advance=(m,seconds)=>{for(let i=0;i<seconds*60;i++)m.tick(1/60)};
+test('portrait motion starts neutral',()=>{const m=new AvaMotion(()=>.5);assert.equal(m.gaze,0);assert.equal(m.blink,0)});
+test('explicit look-right command moves gaze',()=>{const m=new AvaMotion(()=>.5);m.command({type:'gaze',targetX:.65});advance(m,.5);assert.ok(m.gaze>.8)});
+test('gaze command expires smoothly',()=>{const m=new AvaMotion(()=>.5);m.command({type:'gaze',targetX:-.65});advance(m,.5);assert.ok(m.gaze<-.8);advance(m,4.1);assert.ok(Math.abs(m.gaze)<.01)});
+test('blink is temporary',()=>{const m=new AvaMotion(()=>.5);m.startBlink();advance(m,.1);assert.ok(m.blink>.7);advance(m,.3);assert.equal(m.blink,0)});
+test('nod gesture starts and ends',()=>{const m=new AvaMotion(()=>.5);m.startNod();advance(m,.4);assert.ok(m.nod>.5);advance(m,1);assert.equal(m.nod,0)});
+test('motion hold suppresses optional gestures',()=>{const m=new AvaMotion(()=>.5);m.command({type:'motion',mode:'hold'});advance(m,8);assert.equal(m.blink,0);assert.equal(m.nod,0);assert.equal(m.headY,0)});

@@ -1,0 +1,1621 @@
+{
+ "when": "2026-11-23T00:39:21.683Z",
+ "speech": "Approximate audio-driven lip-sync: mouth shapes are estimated from the sound itself. It is not phoneme-accurate; the voice provider sends no phoneme timing.",
+ "controls": {
+  "face": "ARKit 52",
+  "gaze": "camera-anchored offset",
+  "bones": [
+   "head",
+   "neck",
+   "chest",
+   "torso",
+   "leftCollar",
+   "rightCollar"
+  ],
+  "missing": []
+ },
+ "axes": {
+  "head": [
+   1,
+   1,
+   -1
+  ],
+  "torso": [
+   1,
+   1,
+   -1
+  ],
+  "chest": -1,
+  "leftCollar": {
+   "axis": 2,
+   "sign": 1
+  },
+  "rightCollar": {
+   "axis": 2,
+   "sign": -1
+  }
+ },
+ "performance": {
+  "frames": 3000,
+  "fps": 59.8,
+  "p50ms": 16.7,
+  "p95ms": 16.8,
+  "p99ms": 16.8,
+  "worstMs": 50.1,
+  "jsHeapMB": 482,
+  "gpuTextures": 9,
+  "gpuMemory": "not measurable from a web page"
+ },
+ "errors": [],
+ "results": [
+  {
+   "label": "rest",
+   "group": "state",
+   "reference": "02_neutral_front",
+   "state": "idle",
+   "feeling": "neutral",
+   "audible": false,
+   "face": {},
+   "headDeg": [
+    -0.1,
+    0.1,
+    0
+   ],
+   "gazeDeg": [
+    -1.1,
+    0.7
+   ],
+   "shrug": [
+    -0.07,
+    0.04
+   ],
+   "leanDeg": 0.7,
+   "bonesDriven": 6
+  },
+  {
+   "label": "listening",
+   "group": "state",
+   "reference": "MISSING",
+   "state": "listening",
+   "feeling": "neutral",
+   "audible": false,
+   "face": {
+    "mouthSmileLeft": 0.05,
+    "mouthSmileRight": 0.05
+   },
+   "headDeg": [
+    0.2,
+    -0.2,
+    1.7
+   ],
+   "gazeDeg": [
+    -0.1,
+    0
+   ],
+   "shrug": [
+    -0.07,
+    0.04
+   ],
+   "leanDeg": 0.7,
+   "bonesDriven": 6
+  },
+  {
+   "label": "blinking while listening",
+   "group": "combo",
+   "reference": "MISSING",
+   "state": "listening",
+   "feeling": "neutral",
+   "audible": false,
+   "face": {
+    "eyeBlinkLeft": 1,
+    "eyeBlinkRight": 1,
+    "mouthSmileLeft": 0.05,
+    "mouthSmileRight": 0.05
+   },
+   "headDeg": [
+    0.2,
+    -0.3,
+    1.7
+   ],
+   "gazeDeg": [
+    -0.1,
+    0
+   ],
+   "shrug": [
+    -0.02,
+    0.1
+   ],
+   "leanDeg": 0,
+   "bonesDriven": 6
+  },
+  {
+   "label": "thinking",
+   "group": "state",
+   "reference": "MISSING",
+   "state": "thinking",
+   "feeling": "neutral",
+   "audible": false,
+   "face": {},
+   "headDeg": [
+    0.1,
+    -0.1,
+    -1.8
+   ],
+   "gazeDeg": [
+    -10.6,
+    4.5
+   ],
+   "shrug": [
+    -0.02,
+    0.11
+   ],
+   "leanDeg": -0.1,
+   "bonesDriven": 6
+  },
+  {
+   "label": "speaking (real audio)",
+   "group": "state",
+   "reference": "MISSING",
+   "state": "speaking",
+   "feeling": "neutral",
+   "audible": true,
+   "face": {
+    "jawOpen": 0.12,
+    "mouthFunnel": 0.18,
+    "mouthPucker": 0.27,
+    "mouthSmileLeft": 0.04,
+    "mouthSmileRight": 0.04,
+    "mouthStretchLeft": 0.05,
+    "mouthStretchRight": 0.05
+   },
+   "headDeg": [
+    0.2,
+    -0.6,
+    0.1
+   ],
+   "gazeDeg": [
+    0.8,
+    0.6
+   ],
+   "shrug": [
+    -0.02,
+    0.11
+   ],
+   "leanDeg": -0.1,
+   "bonesDriven": 6
+  },
+  {
+   "label": "speaking, a moment later",
+   "group": "state",
+   "reference": "MISSING",
+   "state": "speaking",
+   "feeling": "neutral",
+   "audible": true,
+   "face": {
+    "browInnerUp": 0.04,
+    "browOuterUpLeft": 0.03,
+    "browOuterUpRight": 0.03,
+    "eyeBlinkLeft": 0.78,
+    "eyeBlinkRight": 0.78,
+    "jawOpen": 0.04
+   },
+   "headDeg": [
+    0.1,
+    -1.1,
+    0
+   ],
+   "gazeDeg": [
+    0.8,
+    0.6
+   ],
+   "shrug": [
+    -0.02,
+    0.11
+   ],
+   "leanDeg": -0.1,
+   "bonesDriven": 6
+  },
+  {
+   "label": "speaking while smiling",
+   "group": "combo",
+   "reference": "MISSING",
+   "state": "speaking",
+   "feeling": "happy",
+   "audible": true,
+   "face": {
+    "browInnerUp": 0.03,
+    "cheekSquintLeft": 0.28,
+    "cheekSquintRight": 0.28,
+    "eyeSquintLeft": 0.16,
+    "eyeSquintRight": 0.16,
+    "jawOpen": 0.11,
+    "mouthSmileLeft": 0.28,
+    "mouthSmileRight": 0.28,
+    "mouthStretchLeft": 0.12,
+    "mouthStretchRight": 0.12
+   },
+   "headDeg": [
+    0,
+    -2,
+    -0.2
+   ],
+   "gazeDeg": [
+    0.8,
+    0.6
+   ],
+   "shrug": [
+    -0.02,
+    0.11
+   ],
+   "leanDeg": -0.1,
+   "bonesDriven": 6
+  },
+  {
+   "label": "blinking while speaking",
+   "group": "combo",
+   "reference": "MISSING",
+   "state": "speaking",
+   "feeling": "happy",
+   "audible": true,
+   "face": {
+    "browInnerUp": 0.03,
+    "cheekSquintLeft": 0.29,
+    "cheekSquintRight": 0.29,
+    "eyeBlinkLeft": 1,
+    "eyeBlinkRight": 1,
+    "eyeSquintLeft": 0.16,
+    "eyeSquintRight": 0.16,
+    "jawOpen": 0.09,
+    "mouthLowerDownLeft": 0.04,
+    "mouthLowerDownRight": 0.04,
+    "mouthSmileLeft": 0.21,
+    "mouthSmileRight": 0.21,
+    "mouthStretchLeft": 0.03,
+    "mouthStretchRight": 0.03
+   },
+   "headDeg": [
+    0,
+    -2,
+    -0.3
+   ],
+   "gazeDeg": [
+    0.8,
+    0.6
+   ],
+   "shrug": [
+    -0.02,
+    0.11
+   ],
+   "leanDeg": -0.1,
+   "bonesDriven": 6
+  },
+  {
+   "label": "shrug while speaking",
+   "group": "combo",
+   "reference": "MISSING",
+   "state": "speaking",
+   "feeling": "happy",
+   "audible": true,
+   "face": {
+    "browInnerUp": 0.44,
+    "browOuterUpLeft": 0.37,
+    "browOuterUpRight": 0.37,
+    "cheekSquintLeft": 0.31,
+    "cheekSquintRight": 0.31,
+    "eyeSquintLeft": 0.17,
+    "eyeSquintRight": 0.17,
+    "jawOpen": 0.11,
+    "mouthFrownLeft": 0.08,
+    "mouthFrownRight": 0.08,
+    "mouthFunnel": 0.19,
+    "mouthPressLeft": 0.15,
+    "mouthPressRight": 0.15,
+    "mouthPucker": 0.1,
+    "mouthSmileLeft": 0.21,
+    "mouthSmileRight": 0.21
+   },
+   "headDeg": [
+    -0.1,
+    -2,
+    2.5
+   ],
+   "gazeDeg": [
+    -0.1,
+    0.1
+   ],
+   "shrug": [
+    0.98,
+    0.96
+   ],
+   "leanDeg": -0.1,
+   "bonesDriven": 6
+  },
+  {
+   "label": "interrupted mid-sentence (250 ms after)",
+   "group": "combo",
+   "reference": "MISSING",
+   "state": "listening",
+   "feeling": "happy",
+   "audible": false,
+   "face": {
+    "browInnerUp": 0.2,
+    "browOuterUpLeft": 0.16,
+    "browOuterUpRight": 0.16,
+    "cheekSquintLeft": 0.32,
+    "cheekSquintRight": 0.32,
+    "eyeSquintLeft": 0.18,
+    "eyeSquintRight": 0.18,
+    "mouthSmileLeft": 0.47,
+    "mouthSmileRight": 0.47
+   },
+   "headDeg": [
+    -0.9,
+    -0.3,
+    1.1
+   ],
+   "gazeDeg": [
+    0,
+    0
+   ],
+   "shrug": [
+    -0.02,
+    0.11
+   ],
+   "leanDeg": -0.1,
+   "bonesDriven": 6,
+   "jawJustBeforeInterrupt": 0.12
+  },
+  {
+   "label": "after interruption: listening, mouth at rest",
+   "group": "state",
+   "reference": "MISSING",
+   "state": "thinking",
+   "feeling": "neutral",
+   "audible": false,
+   "face": {
+    "eyeBlinkLeft": 0.46,
+    "eyeBlinkRight": 0.46
+   },
+   "headDeg": [
+    1.1,
+    0.1,
+    0
+   ],
+   "gazeDeg": [
+    7.1,
+    -6
+   ],
+   "shrug": [
+    -0.02,
+    0.11
+   ],
+   "leanDeg": -0.1,
+   "bonesDriven": 6
+  },
+  {
+   "label": "happy",
+   "group": "feeling",
+   "reference": "05_big_smile",
+   "state": "idle",
+   "feeling": "happy",
+   "audible": false,
+   "face": {
+    "browInnerUp": 0.04,
+    "browOuterUpLeft": 0.03,
+    "browOuterUpRight": 0.03,
+    "cheekSquintLeft": 0.37,
+    "cheekSquintRight": 0.37,
+    "eyeSquintLeft": 0.21,
+    "eyeSquintRight": 0.21,
+    "mouthSmileLeft": 0.46,
+    "mouthSmileRight": 0.46
+   },
+   "headDeg": [
+    -0.1,
+    0.3,
+    0
+   ],
+   "gazeDeg": [
+    -0.3,
+    -0.7
+   ],
+   "shrug": [
+    -0.03,
+    0.06
+   ],
+   "leanDeg": -0.3,
+   "bonesDriven": 6
+  },
+  {
+   "label": "sad",
+   "group": "feeling",
+   "reference": "13_sad",
+   "state": "idle",
+   "feeling": "sad",
+   "audible": false,
+   "face": {
+    "browInnerUp": 0.56,
+    "eyeBlinkLeft": 0.68,
+    "eyeBlinkRight": 0.68,
+    "mouthFrownLeft": 0.28,
+    "mouthFrownRight": 0.28
+   },
+   "headDeg": [
+    2.3,
+    0.1,
+    0
+   ],
+   "gazeDeg": [
+    1,
+    -0.5
+   ],
+   "shrug": [
+    -0.03,
+    0.06
+   ],
+   "leanDeg": -0.8,
+   "bonesDriven": 6
+  },
+  {
+   "label": "surprised",
+   "group": "feeling",
+   "reference": "10_surprised_brows_raised",
+   "state": "idle",
+   "feeling": "surprised",
+   "audible": false,
+   "face": {
+    "browInnerUp": 0.48,
+    "browOuterUpLeft": 0.39,
+    "browOuterUpRight": 0.39,
+    "eyeWideLeft": 0.47,
+    "eyeWideRight": 0.47,
+    "jawOpen": 0.13
+   },
+   "headDeg": [
+    -0.6,
+    0,
+    0
+   ],
+   "gazeDeg": [
+    -0.3,
+    0.1
+   ],
+   "shrug": [
+    0.04,
+    0.06
+   ],
+   "leanDeg": -0.1,
+   "bonesDriven": 6
+  },
+  {
+   "label": "confused",
+   "group": "feeling",
+   "reference": "MISSING",
+   "state": "idle",
+   "feeling": "confused",
+   "audible": false,
+   "face": {
+    "browDownRight": 0.33,
+    "browInnerUp": 0.14,
+    "browOuterUpLeft": 0.47,
+    "eyeSquintLeft": 0.17,
+    "eyeSquintRight": 0.17,
+    "mouthPressLeft": 0.18,
+    "mouthPressRight": 0.18
+   },
+   "headDeg": [
+    0.3,
+    -0.2,
+    3.2
+   ],
+   "gazeDeg": [
+    -0.3,
+    0.1
+   ],
+   "shrug": [
+    0.13,
+    0.05
+   ],
+   "leanDeg": 0.9,
+   "bonesDriven": 6
+  },
+  {
+   "label": "curious",
+   "group": "feeling",
+   "reference": "MISSING",
+   "state": "idle",
+   "feeling": "curious",
+   "audible": false,
+   "face": {
+    "browInnerUp": 0.25,
+    "browOuterUpLeft": 0.21,
+    "browOuterUpRight": 0.21,
+    "eyeWideLeft": 0.09,
+    "eyeWideRight": 0.09
+   },
+   "headDeg": [
+    0.4,
+    -0.3,
+    1.6
+   ],
+   "gazeDeg": [
+    -0.2,
+    -0.6
+   ],
+   "shrug": [
+    0.13,
+    0.05
+   ],
+   "leanDeg": 1.8,
+   "bonesDriven": 6
+  },
+  {
+   "label": "concerned",
+   "group": "feeling",
+   "reference": "MISSING",
+   "state": "idle",
+   "feeling": "concerned",
+   "audible": false,
+   "face": {
+    "browDownLeft": 0.11,
+    "browDownRight": 0.11,
+    "browInnerUp": 0.38,
+    "eyeBlinkLeft": 0.87,
+    "eyeBlinkRight": 0.87,
+    "eyeSquintLeft": 0.08,
+    "eyeSquintRight": 0.08,
+    "mouthFrownLeft": 0.09,
+    "mouthFrownRight": 0.09
+   },
+   "headDeg": [
+    0.1,
+    -0.2,
+    0
+   ],
+   "gazeDeg": [
+    -0.4,
+    -0.2
+   ],
+   "shrug": [
+    0.12,
+    0.05
+   ],
+   "leanDeg": 1.5,
+   "bonesDriven": 6
+  },
+  {
+   "label": "amused",
+   "group": "feeling",
+   "reference": "MISSING",
+   "state": "idle",
+   "feeling": "amused",
+   "audible": false,
+   "face": {
+    "cheekSquintLeft": 0.28,
+    "cheekSquintRight": 0.28,
+    "eyeSquintLeft": 0.26,
+    "eyeSquintRight": 0.26,
+    "mouthSmileLeft": 0.46,
+    "mouthSmileRight": 0.29
+   },
+   "headDeg": [
+    -0.2,
+    -0.1,
+    0
+   ],
+   "gazeDeg": [
+    -0.4,
+    0.7
+   ],
+   "shrug": [
+    0.07,
+    -0.03
+   ],
+   "leanDeg": -0.5,
+   "bonesDriven": 6
+  },
+  {
+   "label": "skeptical",
+   "group": "feeling",
+   "reference": "MISSING",
+   "state": "idle",
+   "feeling": "skeptical",
+   "audible": false,
+   "face": {
+    "browDownRight": 0.19,
+    "browInnerUp": 0.17,
+    "browOuterUpLeft": 0.56,
+    "mouthLeft": 0.23,
+    "mouthPressLeft": 0.17,
+    "mouthPressRight": 0.17
+   },
+   "headDeg": [
+    0,
+    0.1,
+    -2.1
+   ],
+   "gazeDeg": [
+    5.3,
+    -1.4
+   ],
+   "shrug": [
+    0.07,
+    -0.03
+   ],
+   "leanDeg": -0.5,
+   "bonesDriven": 6
+  },
+  {
+   "label": "serious",
+   "group": "feeling",
+   "reference": "MISSING",
+   "state": "idle",
+   "feeling": "serious",
+   "audible": false,
+   "face": {
+    "browDownLeft": 0.14,
+    "browDownRight": 0.14,
+    "eyeBlinkLeft": 0.13,
+    "eyeBlinkRight": 0.13,
+    "mouthFrownLeft": 0.11,
+    "mouthFrownRight": 0.11,
+    "mouthPressLeft": 0.14,
+    "mouthPressRight": 0.14
+   },
+   "headDeg": [
+    0.1,
+    0.3,
+    0
+   ],
+   "gazeDeg": [
+    -0.5,
+    -0.2
+   ],
+   "shrug": [
+    0.07,
+    -0.03
+   ],
+   "leanDeg": -0.5,
+   "bonesDriven": 6
+  },
+  {
+   "label": "excited",
+   "group": "feeling",
+   "reference": "MISSING",
+   "state": "idle",
+   "feeling": "excited",
+   "audible": false,
+   "face": {
+    "browInnerUp": 0.29,
+    "browOuterUpLeft": 0.25,
+    "browOuterUpRight": 0.25,
+    "eyeWideLeft": 0.17,
+    "eyeWideRight": 0.17,
+    "mouthSmileLeft": 0.46,
+    "mouthSmileRight": 0.46
+   },
+   "headDeg": [
+    0,
+    0.3,
+    0
+   ],
+   "gazeDeg": [
+    7.6,
+    1.7
+   ],
+   "shrug": [
+    0.07,
+    -0.03
+   ],
+   "leanDeg": -0.5,
+   "bonesDriven": 6
+  },
+  {
+   "label": "happy at 0.4 intensity",
+   "group": "feeling",
+   "reference": "MISSING",
+   "state": "idle",
+   "feeling": "happy",
+   "audible": false,
+   "face": {
+    "cheekSquintLeft": 0.15,
+    "cheekSquintRight": 0.15,
+    "eyeSquintLeft": 0.08,
+    "eyeSquintRight": 0.08,
+    "mouthSmileLeft": 0.19,
+    "mouthSmileRight": 0.19
+   },
+   "headDeg": [
+    -0.1,
+    0.1,
+    0
+   ],
+   "gazeDeg": [
+    0.8,
+    0.4
+   ],
+   "shrug": [
+    0.13,
+    0.04
+   ],
+   "leanDeg": 0.2,
+   "bonesDriven": 6
+  },
+  {
+   "label": "sad at 0.4 intensity",
+   "group": "feeling",
+   "reference": "MISSING",
+   "state": "idle",
+   "feeling": "sad",
+   "audible": false,
+   "face": {
+    "browInnerUp": 0.22,
+    "eyeBlinkLeft": 0.98,
+    "eyeBlinkRight": 0.98,
+    "mouthFrownLeft": 0.11,
+    "mouthFrownRight": 0.11
+   },
+   "headDeg": [
+    0.7,
+    -0.1,
+    0
+   ],
+   "gazeDeg": [
+    -0.1,
+    -0.2
+   ],
+   "shrug": [
+    0.13,
+    0.04
+   ],
+   "leanDeg": 0,
+   "bonesDriven": 6
+  },
+  {
+   "label": "nod",
+   "group": "action",
+   "reference": "MISSING",
+   "state": "idle",
+   "feeling": "neutral",
+   "audible": false,
+   "face": {},
+   "headDeg": [
+    2.5,
+    -0.2,
+    0
+   ],
+   "gazeDeg": [
+    -0.1,
+    -0.2
+   ],
+   "shrug": [
+    0.13,
+    0.04
+   ],
+   "leanDeg": 0.1,
+   "bonesDriven": 6
+  },
+  {
+   "label": "shake",
+   "group": "action",
+   "reference": "MISSING",
+   "state": "idle",
+   "feeling": "neutral",
+   "audible": false,
+   "face": {
+    "browDownLeft": 0.08,
+    "browDownRight": 0.08
+   },
+   "headDeg": [
+    0,
+    3.4,
+    0
+   ],
+   "gazeDeg": [
+    -1,
+    0.8
+   ],
+   "shrug": [
+    0.13,
+    0.04
+   ],
+   "leanDeg": 0.2,
+   "bonesDriven": 6
+  },
+  {
+   "label": "tiltLeft",
+   "group": "action",
+   "reference": "MISSING",
+   "state": "idle",
+   "feeling": "neutral",
+   "audible": false,
+   "face": {},
+   "headDeg": [
+    0.2,
+    -0.3,
+    -5.7
+   ],
+   "gazeDeg": [
+    1.2,
+    0.2
+   ],
+   "shrug": [
+    0.13,
+    0.04
+   ],
+   "leanDeg": 0.2,
+   "bonesDriven": 6
+  },
+  {
+   "label": "tiltRight",
+   "group": "action",
+   "reference": "MISSING",
+   "state": "idle",
+   "feeling": "neutral",
+   "audible": false,
+   "face": {},
+   "headDeg": [
+    0.2,
+    0,
+    5.7
+   ],
+   "gazeDeg": [
+    0.3,
+    -0.7
+   ],
+   "shrug": [
+    0.13,
+    0.04
+   ],
+   "leanDeg": 0.2,
+   "bonesDriven": 6
+  },
+  {
+   "label": "turnLeft",
+   "group": "action",
+   "reference": "04_side_gaze_image_left",
+   "state": "idle",
+   "feeling": "neutral",
+   "audible": false,
+   "face": {},
+   "headDeg": [
+    0.1,
+    -13.5,
+    0
+   ],
+   "gazeDeg": [
+    -0.9,
+    0
+   ],
+   "shrug": [
+    -0.01,
+    0.09
+   ],
+   "leanDeg": 0.7,
+   "bonesDriven": 6
+  },
+  {
+   "label": "turnRight",
+   "group": "action",
+   "reference": "03_three_quarter_image_right",
+   "state": "idle",
+   "feeling": "neutral",
+   "audible": false,
+   "face": {},
+   "headDeg": [
+    0,
+    14,
+    0
+   ],
+   "gazeDeg": [
+    -0.1,
+    -0.2
+   ],
+   "shrug": [
+    -0.01,
+    0.09
+   ],
+   "leanDeg": 0.7,
+   "bonesDriven": 6
+  },
+  {
+   "label": "headUp",
+   "group": "action",
+   "reference": "MISSING",
+   "state": "idle",
+   "feeling": "neutral",
+   "audible": false,
+   "face": {},
+   "headDeg": [
+    -6.4,
+    -0.1,
+    0
+   ],
+   "gazeDeg": [
+    0.3,
+    -0.1
+   ],
+   "shrug": [
+    0.12,
+    0.12
+   ],
+   "leanDeg": 1.1,
+   "bonesDriven": 6
+  },
+  {
+   "label": "headDown",
+   "group": "action",
+   "reference": "15_head_down",
+   "state": "idle",
+   "feeling": "neutral",
+   "audible": false,
+   "face": {},
+   "headDeg": [
+    7.9,
+    -0.3,
+    0
+   ],
+   "gazeDeg": [
+    0.7,
+    0.1
+   ],
+   "shrug": [
+    0.12,
+    0.12
+   ],
+   "leanDeg": 1.1,
+   "bonesDriven": 6
+  },
+  {
+   "label": "lookLeft",
+   "group": "action",
+   "reference": "MISSING",
+   "state": "idle",
+   "feeling": "neutral",
+   "audible": false,
+   "face": {},
+   "headDeg": [
+    0.1,
+    -0.2,
+    0
+   ],
+   "gazeDeg": [
+    -14,
+    0
+   ],
+   "shrug": [
+    0.11,
+    0.12
+   ],
+   "leanDeg": 1.1,
+   "bonesDriven": 6
+  },
+  {
+   "label": "lookRight",
+   "group": "action",
+   "reference": "09_side_gaze_image_right_alternate",
+   "state": "idle",
+   "feeling": "neutral",
+   "audible": false,
+   "face": {},
+   "headDeg": [
+    -0.1,
+    -0.1,
+    0
+   ],
+   "gazeDeg": [
+    14,
+    0
+   ],
+   "shrug": [
+    -0.08,
+    0.13
+   ],
+   "leanDeg": 0.4,
+   "bonesDriven": 6
+  },
+  {
+   "label": "lookUp",
+   "group": "action",
+   "reference": "06_eyes_up",
+   "state": "idle",
+   "feeling": "neutral",
+   "audible": false,
+   "face": {
+    "browInnerUp": 0.11,
+    "browOuterUpLeft": 0.09,
+    "browOuterUpRight": 0.09
+   },
+   "headDeg": [
+    0,
+    0.1,
+    0
+   ],
+   "gazeDeg": [
+    0,
+    10
+   ],
+   "shrug": [
+    -0.08,
+    0.13
+   ],
+   "leanDeg": 0.4,
+   "bonesDriven": 6
+  },
+  {
+   "label": "lookDown",
+   "group": "action",
+   "reference": "07_eyes_down",
+   "state": "idle",
+   "feeling": "neutral",
+   "audible": false,
+   "face": {
+    "eyeBlinkLeft": 0.17,
+    "eyeBlinkRight": 0.17
+   },
+   "headDeg": [
+    0.3,
+    0.3,
+    0
+   ],
+   "gazeDeg": [
+    0,
+    -10
+   ],
+   "shrug": [
+    -0.04,
+    0.06
+   ],
+   "leanDeg": 0.6,
+   "bonesDriven": 6
+  },
+  {
+   "label": "lookAway",
+   "group": "action",
+   "reference": "MISSING",
+   "state": "idle",
+   "feeling": "neutral",
+   "audible": false,
+   "face": {},
+   "headDeg": [
+    0.4,
+    0.3,
+    0
+   ],
+   "gazeDeg": [
+    10,
+    -3
+   ],
+   "shrug": [
+    -0.01,
+    0.02
+   ],
+   "leanDeg": 0.6,
+   "bonesDriven": 6
+  },
+  {
+   "label": "blink",
+   "group": "action",
+   "reference": "14_eyes_closed",
+   "state": "idle",
+   "feeling": "neutral",
+   "audible": false,
+   "face": {
+    "eyeBlinkLeft": 1,
+    "eyeBlinkRight": 1
+   },
+   "headDeg": [
+    0.3,
+    0.2,
+    0
+   ],
+   "gazeDeg": [
+    -1,
+    -0.2
+   ],
+   "shrug": [
+    -0.01,
+    0.02
+   ],
+   "leanDeg": 0.6,
+   "bonesDriven": 6
+  },
+  {
+   "label": "eyesClosed",
+   "group": "action",
+   "reference": "14_eyes_closed",
+   "state": "idle",
+   "feeling": "neutral",
+   "audible": false,
+   "face": {
+    "eyeBlinkLeft": 1,
+    "eyeBlinkRight": 1
+   },
+   "headDeg": [
+    0.3,
+    0.1,
+    0
+   ],
+   "gazeDeg": [
+    0.4,
+    -0.3
+   ],
+   "shrug": [
+    -0.01,
+    0.02
+   ],
+   "leanDeg": 0.6,
+   "bonesDriven": 6
+  },
+  {
+   "label": "squint",
+   "group": "action",
+   "reference": "MISSING",
+   "state": "idle",
+   "feeling": "neutral",
+   "audible": false,
+   "face": {
+    "browDownLeft": 0.2,
+    "browDownRight": 0.2,
+    "eyeSquintLeft": 0.7,
+    "eyeSquintRight": 0.7
+   },
+   "headDeg": [
+    0.1,
+    -0.1,
+    0
+   ],
+   "gazeDeg": [
+    -0.2,
+    -0.4
+   ],
+   "shrug": [
+    -0.01,
+    0.02
+   ],
+   "leanDeg": 0.6,
+   "bonesDriven": 6
+  },
+  {
+   "label": "widen",
+   "group": "action",
+   "reference": "MISSING",
+   "state": "idle",
+   "feeling": "neutral",
+   "audible": false,
+   "face": {
+    "browInnerUp": 0.27,
+    "browOuterUpLeft": 0.22,
+    "browOuterUpRight": 0.22,
+    "eyeWideLeft": 0.8,
+    "eyeWideRight": 0.8
+   },
+   "headDeg": [
+    -0.1,
+    -0.2,
+    0
+   ],
+   "gazeDeg": [
+    -0.4,
+    -0.6
+   ],
+   "shrug": [
+    -0.01,
+    0.02
+   ],
+   "leanDeg": 0.6,
+   "bonesDriven": 6
+  },
+  {
+   "label": "browRaise",
+   "group": "action",
+   "reference": "MISSING",
+   "state": "idle",
+   "feeling": "neutral",
+   "audible": false,
+   "face": {
+    "browInnerUp": 0.54,
+    "browOuterUpLeft": 0.45,
+    "browOuterUpRight": 0.45
+   },
+   "headDeg": [
+    -0.2,
+    -0.3,
+    0
+   ],
+   "gazeDeg": [
+    -0.4,
+    -0.6
+   ],
+   "shrug": [
+    0.04,
+    -0.03
+   ],
+   "leanDeg": -0.3,
+   "bonesDriven": 6
+  },
+  {
+   "label": "browFlash",
+   "group": "action",
+   "reference": "MISSING",
+   "state": "idle",
+   "feeling": "neutral",
+   "audible": false,
+   "face": {
+    "browInnerUp": 0.36,
+    "browOuterUpLeft": 0.3,
+    "browOuterUpRight": 0.3
+   },
+   "headDeg": [
+    0.1,
+    -0.2,
+    0
+   ],
+   "gazeDeg": [
+    1,
+    -0.3
+   ],
+   "shrug": [
+    0.04,
+    -0.03
+   ],
+   "leanDeg": -0.3,
+   "bonesDriven": 6
+  },
+  {
+   "label": "softSmile",
+   "group": "action",
+   "reference": "MISSING",
+   "state": "idle",
+   "feeling": "neutral",
+   "audible": false,
+   "face": {
+    "cheekSquintLeft": 0.2,
+    "cheekSquintRight": 0.2,
+    "eyeSquintLeft": 0.1,
+    "eyeSquintRight": 0.1,
+    "mouthSmileLeft": 0.35,
+    "mouthSmileRight": 0.35
+   },
+   "headDeg": [
+    0.2,
+    0,
+    0
+   ],
+   "gazeDeg": [
+    1,
+    -0.3
+   ],
+   "shrug": [
+    0.04,
+    -0.03
+   ],
+   "leanDeg": -0.3,
+   "bonesDriven": 6
+  },
+  {
+   "label": "bigSmile",
+   "group": "action",
+   "reference": "05_big_smile",
+   "state": "idle",
+   "feeling": "neutral",
+   "audible": false,
+   "face": {
+    "cheekSquintLeft": 0.6,
+    "cheekSquintRight": 0.6,
+    "eyeSquintLeft": 0.35,
+    "eyeSquintRight": 0.35,
+    "jawOpen": 0.08,
+    "mouthSmileLeft": 0.85,
+    "mouthSmileRight": 0.85
+   },
+   "headDeg": [
+    -0.1,
+    0.3,
+    0
+   ],
+   "gazeDeg": [
+    0,
+    0.2
+   ],
+   "shrug": [
+    0.04,
+    -0.03
+   ],
+   "leanDeg": -0.3,
+   "bonesDriven": 6
+  },
+  {
+   "label": "surprise",
+   "group": "action",
+   "reference": "10_surprised_brows_raised",
+   "state": "idle",
+   "feeling": "neutral",
+   "audible": false,
+   "face": {
+    "browInnerUp": 0.77,
+    "browOuterUpLeft": 0.64,
+    "browOuterUpRight": 0.64,
+    "eyeWideLeft": 0.75,
+    "eyeWideRight": 0.75,
+    "jawOpen": 0.22
+   },
+   "headDeg": [
+    -2,
+    0.1,
+    0
+   ],
+   "gazeDeg": [
+    -0.3,
+    0.2
+   ],
+   "shrug": [
+    0,
+    -0.08
+   ],
+   "leanDeg": -0.5,
+   "bonesDriven": 6
+  },
+  {
+   "label": "shrug",
+   "group": "action",
+   "reference": "11_shoulder_shrug",
+   "state": "idle",
+   "feeling": "neutral",
+   "audible": false,
+   "face": {
+    "browInnerUp": 0.41,
+    "browOuterUpLeft": 0.34,
+    "browOuterUpRight": 0.34,
+    "mouthFrownLeft": 0.15,
+    "mouthFrownRight": 0.15,
+    "mouthPressLeft": 0.3,
+    "mouthPressRight": 0.3
+   },
+   "headDeg": [
+    0.2,
+    -0.1,
+    2.9
+   ],
+   "gazeDeg": [
+    -0.5,
+    -0.5
+   ],
+   "shrug": [
+    1,
+    0.77
+   ],
+   "leanDeg": 0.7,
+   "bonesDriven": 6
+  },
+  {
+   "label": "shouldersUp",
+   "group": "action",
+   "reference": "11_shoulder_shrug",
+   "state": "idle",
+   "feeling": "neutral",
+   "audible": false,
+   "face": {},
+   "headDeg": [
+    0.4,
+    -0.2,
+    0
+   ],
+   "gazeDeg": [
+    -0.1,
+    -0.4
+   ],
+   "shrug": [
+    0.7,
+    0.62
+   ],
+   "leanDeg": 0.7,
+   "bonesDriven": 6
+  },
+  {
+   "label": "shouldersDown",
+   "group": "action",
+   "reference": "MISSING",
+   "state": "idle",
+   "feeling": "neutral",
+   "audible": false,
+   "face": {},
+   "headDeg": [
+    0.3,
+    -0.3,
+    0
+   ],
+   "gazeDeg": [
+    -0.1,
+    -0.3
+   ],
+   "shrug": [
+    -0.5,
+    -0.58
+   ],
+   "leanDeg": 0.7,
+   "bonesDriven": 6
+  },
+  {
+   "label": "leanIn",
+   "group": "action",
+   "reference": "MISSING",
+   "state": "idle",
+   "feeling": "neutral",
+   "audible": false,
+   "face": {},
+   "headDeg": [
+    1,
+    -0.1,
+    0
+   ],
+   "gazeDeg": [
+    0.6,
+    0.2
+   ],
+   "shrug": [
+    0.12,
+    0.02
+   ],
+   "leanDeg": 1.9,
+   "bonesDriven": 6
+  },
+  {
+   "label": "leanBack",
+   "group": "action",
+   "reference": "MISSING",
+   "state": "idle",
+   "feeling": "neutral",
+   "audible": false,
+   "face": {},
+   "headDeg": [
+    -1,
+    0.3,
+    0
+   ],
+   "gazeDeg": [
+    -0.9,
+    -0.1
+   ],
+   "shrug": [
+    0.13,
+    0.02
+   ],
+   "leanDeg": -1.9,
+   "bonesDriven": 6
+  },
+  {
+   "label": "turnRight + lookRight",
+   "group": "combo",
+   "reference": "01_side_gaze_image_right",
+   "state": "idle",
+   "feeling": "neutral",
+   "audible": false,
+   "face": {},
+   "headDeg": [
+    0.4,
+    13.9,
+    0
+   ],
+   "gazeDeg": [
+    14,
+    0
+   ],
+   "shrug": [
+    0.13,
+    0.03
+   ],
+   "leanDeg": 0.6,
+   "bonesDriven": 6
+  },
+  {
+   "label": "head turned, eyes held on you",
+   "group": "combo",
+   "reference": "MISSING",
+   "state": "idle",
+   "feeling": "neutral",
+   "audible": false,
+   "face": {},
+   "headDeg": [
+    0,
+    13.6,
+    0
+   ],
+   "gazeDeg": [
+    0,
+    0
+   ],
+   "shrug": [
+    0.12,
+    0.03
+   ],
+   "leanDeg": 0.5,
+   "bonesDriven": 6
+  },
+  {
+   "label": "skeptical + shrug",
+   "group": "combo",
+   "reference": "MISSING",
+   "state": "idle",
+   "feeling": "skeptical",
+   "audible": false,
+   "face": {
+    "browDownRight": 0.17,
+    "browInnerUp": 0.56,
+    "browOuterUpLeft": 0.85,
+    "browOuterUpRight": 0.34,
+    "mouthFrownLeft": 0.15,
+    "mouthFrownRight": 0.15,
+    "mouthLeft": 0.21,
+    "mouthPressLeft": 0.45,
+    "mouthPressRight": 0.45
+   },
+   "headDeg": [
+    -0.3,
+    -0.3,
+    0.9
+   ],
+   "gazeDeg": [
+    0.7,
+    0.7
+   ],
+   "shrug": [
+    1,
+    0.89
+   ],
+   "leanDeg": -0.4,
+   "bonesDriven": 6
+  },
+  {
+   "label": "headDown + lookDown",
+   "group": "combo",
+   "reference": "15_head_down",
+   "state": "idle",
+   "feeling": "neutral",
+   "audible": false,
+   "face": {
+    "eyeBlinkLeft": 0.17,
+    "eyeBlinkRight": 0.17
+   },
+   "headDeg": [
+    7.3,
+    -0.1,
+    0
+   ],
+   "gazeDeg": [
+    0,
+    -10
+   ],
+   "shrug": [
+    0.06,
+    0.04
+   ],
+   "leanDeg": -0.4,
+   "bonesDriven": 6
+  },
+  {
+   "label": "recovered to rest",
+   "group": "state",
+   "reference": "02_neutral_front",
+   "state": "idle",
+   "feeling": "neutral",
+   "audible": false,
+   "face": {},
+   "headDeg": [
+    0.4,
+    0.1,
+    0
+   ],
+   "gazeDeg": [
+    0.1,
+    0.7
+   ],
+   "shrug": [
+    0.05,
+    0.08
+   ],
+   "leanDeg": 1,
+   "bonesDriven": 6
+  }
+ ]
+}

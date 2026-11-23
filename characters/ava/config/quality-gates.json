@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "0.1.0",
+  "targets": {
+    "width": 720,
+    "height": 1280,
+    "fps": 30,
+    "maxAvatarSpecificRuntimeMemoryMB": 200,
+    "maxAssetCacheMB": 16,
+    "silentDemoSeconds": 60,
+    "soakTestMinutes": 30
+  },
+  "qualityGates": [
+    {
+      "id": "G1",
+      "name": "Identity consistency",
+      "required": true,
+      "rule": "Same recognizably original face throughout motion; compare stills and recorded motion"
+    },
+    {
+      "id": "G2",
+      "name": "Eyes and blink realism",
+      "required": true,
+      "rule": "Realistic eyelid deformation, proper eye occlusion, reflections and natural gaze; no sliding overlays"
+    },
+    {
+      "id": "G3",
+      "name": "3D head behavior",
+      "required": true,
+      "rule": "Head movement exhibits correct geometry and parallax, no flat canvas translations masquerading as 3D"
+    },
+    {
+      "id": "G4",
+      "name": "Voice-first interaction",
+      "required": true,
+      "rule": "Speak command and receive visible motion response without buttons"
+    },
+    {
+      "id": "G5",
+      "name": "Performance",
+      "required": true,
+      "rule": "Measure FPS frame-time p95, startup, CPU, memory on connected Quadro K1200 machine"
+    },
+    {
+      "id": "G6",
+      "name": "Truthful reporting",
+      "required": true,
+      "rule": "Do not call placeholder portrait animation a photorealistic talking avatar"
+    }
+  ],
+  "tested": false,
+  "measurements": []
+}

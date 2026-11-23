@@ -1,0 +1,155 @@
+{
+  "schemaVersion": "0.1.0",
+  "primaryUI": "microphone",
+  "requiresButtonsForNormalInteraction": false,
+  "microphonePermission": "explicit_user_gesture",
+  "vad": {
+    "type": "local_audio_activity",
+    "silenceMsToFinalize": 650,
+    "maxUtteranceSeconds": 25
+  },
+  "speechToText": {
+    "initial": "browser_SpeechRecognition_if_available",
+    "fallback": "provider_adapter",
+    "caveat": "browser speech recognition may contact vendor servers and may not be supported in all browsers"
+  },
+  "commands": [
+    {
+      "id": "look_left",
+      "phrases": [
+        "look left",
+        "look to your left"
+      ],
+      "action": {
+        "type": "gaze",
+        "targetX": -0.65
+      },
+      "spokenAck": false
+    },
+    {
+      "id": "look_right",
+      "phrases": [
+        "look right",
+        "look to your right"
+      ],
+      "action": {
+        "type": "gaze",
+        "targetX": 0.65
+      },
+      "spokenAck": false
+    },
+    {
+      "id": "look_at_me",
+      "phrases": [
+        "look at me",
+        "look at the camera",
+        "face me"
+      ],
+      "action": {
+        "type": "gaze",
+        "targetX": 0,
+        "targetY": 0
+      },
+      "spokenAck": false
+    },
+    {
+      "id": "nod",
+      "phrases": [
+        "nod",
+        "give me a nod"
+      ],
+      "action": {
+        "type": "head",
+        "gesture": "nod"
+      },
+      "spokenAck": false
+    },
+    {
+      "id": "tilt_head",
+      "phrases": [
+        "tilt your head"
+      ],
+      "action": {
+        "type": "head",
+        "gesture": "tilt"
+      },
+      "spokenAck": false
+    },
+    {
+      "id": "smile",
+      "phrases": [
+        "smile",
+        "give me a smile"
+      ],
+      "action": {
+        "type": "expression",
+        "name": "smile",
+        "intensity": 0.3
+      },
+      "spokenAck": false
+    },
+    {
+      "id": "stop_moving",
+      "phrases": [
+        "stay still",
+        "stop moving"
+      ],
+      "action": {
+        "type": "motion",
+        "mode": "hold"
+      },
+      "spokenAck": false
+    },
+    {
+      "id": "resume",
+      "phrases": [
+        "relax",
+        "move normally",
+        "resume idle"
+      ],
+      "action": {
+        "type": "motion",
+        "mode": "idle"
+      },
+      "spokenAck": false
+    },
+    {
+      "id": "introduce",
+      "phrases": [
+        "introduce yourself",
+        "who are you"
+      ],
+      "action": {
+        "type": "dialogue",
+        "intent": "introduce"
+      },
+      "spokenAck": true
+    },
+    {
+      "id": "blink",
+      "phrases": [
+        "blink",
+        "blink your eyes",
+        "close your eyes and open them"
+      ],
+      "action": {
+        "type": "eyes",
+        "gesture": "blink"
+      },
+      "spokenAck": false
+    }
+  ],
+  "dialogue": {
+    "firstStep": "simple_local_intents",
+    "nextStep": "provider_agnostic_conversation",
+    "preferredProviderLater": "OpenAI Realtime",
+    "credentials": "environment_or_secure_server_only_never_in_client",
+    "audioOutput": "speech_synthesis_fallback_then_realtime_output",
+    "mustNotPretendLLMIsConnected": true
+  },
+  "privacy": {
+    "voiceRecordingDefault": false,
+    "requireUserConsentForCloudVoice": true,
+    "neverEmbedSecrets": true
+  }
+}

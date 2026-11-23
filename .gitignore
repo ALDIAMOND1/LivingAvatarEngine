@@ -1,0 +1,7 @@
+.claude/
+node_modules/
+.env
+.env.*
+*.log
+*KEY*.txt
+API SPEECH.txt

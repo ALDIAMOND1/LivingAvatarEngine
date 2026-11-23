@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b1119"><title>Nia — Living Avatar Engine</title><link rel="stylesheet" href="./src/nia.css"></head>
+<body>
+<main class="app">
+  <header class="top"><a class="logo" href="/" aria-label="Living Avatar Engine"><span class="mark">N</span><span>NIA <small>Living Avatar Engine</small></span></a><span class="prototype">LOCAL RESEARCH BUILD <i></i></span></header>
+  <div class="main-grid">
+    <section class="portrait-stage" aria-label="Nia animated portrait">
+      <canvas id="nia" width="720" height="960"></canvas>
+      <div class="stage-sheen"></div>
+      <div class="stage-top"><span class="identity"><span class="online-dot"></span>Nia <small>Friendly AI companion · original character</small></span><span id="expression">IDLE</span></div>
+      <div class="stage-bottom"><div class="live-bars" id="liveBars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span id="stageMessage">Waiting to meet you</span><span id="fps">— FPS</span></div>
+    </section>
+    <section class="conversation">
+      <div class="welcome"><span class="eyebrow">VOICE FIRST · NO MOTION BUTTONS</span><h1>Meet Nia.</h1><p>A photorealistic digital presenter learning to listen, look, and respond naturally. Speak to her directly.</p></div>
+      <div class="signal" id="signal"><span class="signal-glow"></span><span id="signalText">Microphone not active</span></div>
+      <div class="dialogue" aria-live="polite">
+        <div class="event"><span class="speaker">YOU</span><p id="heard">Say “Nia, look at me” or “Introduce yourself.”</p></div>
+        <div class="event"><span class="speaker speaker-ava">NIA</span><p id="answered">I'm here when you're ready.</p></div>
+      </div>
+      <div class="voice-actions"><button id="mic" class="mic" type="button"><span class="mic-symbol" aria-hidden="true">◉</span><span id="micLabel">Start talking</span></button><div class="voice-note">One click to grant microphone permission. After that, talk naturally—no gesture controls.</div></div>
+      <div class="capabilities"><span>TRY SAYING</span><div class="examples">“Look left” <b>·</b> “Look right” <b>·</b> “Blink” <b>·</b> “Introduce yourself”</div></div>
+      <p class="disclosure" id="disclosure">This build uses the browser's speech recognition and speech synthesis where available. Recognition may use your browser vendor's online service. No conversational AI provider is connected yet. Nia's eye states are prepared portrait assets; realistic 3D head and audio-based mouth animation remain in development.</p>
+    </section>
+  </div>
+  <footer>NIA • CHARACTER 01 <span>Locally rendered · compact prepared eye assets · voice-command research</span></footer>
+</main>
+<script type="module" src="./src/nia-app.js"></script></body></html>

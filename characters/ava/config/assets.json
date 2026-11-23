@@ -1,0 +1,81 @@
+{
+  "schemaVersion": "0.1.0",
+  "characterId": "ava-001",
+  "assetRoot": "assets",
+  "assets": [
+    {
+      "id": "originalPortrait",
+      "path": "assets/portrait/ava-master.webp",
+      "required": true,
+      "status": "ready",
+      "source": "ORIGINAL_AI_GENERATED",
+      "description": "New original fictional Ava photorealistic portrait generated for this project"
+    },
+    {
+      "id": "neutralTexture",
+      "path": "assets/face/neutral.ktx2",
+      "required": true,
+      "status": "missing",
+      "source": "OFFLINE_PREP",
+      "description": "Identity-preserving high-quality compressed neutral texture"
+    },
+    {
+      "id": "faceGeometry",
+      "path": "assets/face/face.glb",
+      "required": true,
+      "status": "missing",
+      "source": "OFFLINE_PREP",
+      "description": "Fitted 2.5D/3D mesh with eyelids and eyes"
+    },
+    {
+      "id": "blinkCorrection",
+      "path": "assets/motion/blink.bin",
+      "required": false,
+      "status": "missing",
+      "source": "OFFLINE_PREP",
+      "description": "Optional photorealistic blink corrections if rig alone insufficient"
+    },
+    {
+      "id": "gazeCorrection",
+      "path": "assets/motion/gaze.bin",
+      "required": false,
+      "status": "missing",
+      "source": "OFFLINE_PREP",
+      "description": "Optional view-dependent eye correction"
+    },
+    {
+      "id": "speechMouth",
+      "path": "assets/face/mouth-atlas.ktx2",
+      "required": false,
+      "status": "missing",
+      "source": "OFFLINE_PREP",
+      "description": "Mouth/teeth texture state support for audio visemes"
+    },
+    {
+      "id": "eyePoseAtlas",
+      "path": "assets/face/ava-eye-atlas.webp",
+      "required": false,
+      "status": "ready",
+      "source": "ORIGINAL_AI_GENERATED_PREP",
+      "description": "Compact prepared neutral/blink/gaze photographic eye-state atlas for experimental 2D compositor"
+    }
+  ],
+  "cache": {
+    "policy": "bounded_lru",
+    "startup": [
+      "originalPortrait",
+      "faceGeometry",
+      "neutralTexture"
+    ],
+    "compressedMotionCacheTargetMB": 16,
+    "decoderFramesTargetMB": 48,
+    "disposeDecodedUnused": true,
+    "prefetchWhenIdle": true,
+    "notes": "Budget is provisional and must be verified on hardware"
+  },
+  "network": {
+    "initialMode": "local_files",
+    "futureMode": "cdn_http_range_or_chunk_manifest",
+    "neverDownloadEntireMotionLibraryAtStartup": true
+  }
+}

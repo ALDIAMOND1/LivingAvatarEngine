@@ -1,0 +1,103 @@
+{
+  "character": "Nia",
+  "status": "visually relabeled reference images, NOT verified identity-consistent animation frames",
+  "direction_convention": "image left/right refers to direction on screen, not subject anatomical left/right",
+  "notes": [
+    "Only visible poses have been labeled; missing actions are not fabricated.",
+    "Some portraits visibly differ in hairstyle, proportions, framing, and apparent age.",
+    "Images are independently generated; not registered or safe to blend as animation frames.",
+    "No distinct speaking-only mouth pose, head tilt/twist, shoulder-down movement, or true head-up rotation is reliably shown."
+  ],
+  "images": [
+    {
+      "source": "01_neutral_front.png",
+      "file": "01_side_gaze_image_right.png",
+      "visible_action": "side_gaze_image_right",
+      "observation": "Eyes and face oriented toward image right; not neutral front"
+    },
+    {
+      "source": "02_head_turned_right.png",
+      "file": "02_neutral_front.png",
+      "visible_action": "neutral_front",
+      "observation": "Facing camera, relaxed closed mouth"
+    },
+    {
+      "source": "03_head_turned_left.png",
+      "file": "03_three_quarter_image_right.png",
+      "visible_action": "three_quarter_image_right",
+      "observation": "Head turned toward image right, neutral"
+    },
+    {
+      "source": "04_big_smile.png",
+      "file": "04_side_gaze_image_left.png",
+      "visible_action": "side_gaze_image_left",
+      "observation": "Face and gaze toward image left, not a big smile"
+    },
+    {
+      "source": "05_eyes_up.png",
+      "file": "05_big_smile.png",
+      "visible_action": "big_smile",
+      "observation": "Broad smile with visible teeth"
+    },
+    {
+      "source": "06_eyes_down.png",
+      "file": "06_eyes_up.png",
+      "visible_action": "eyes_up",
+      "observation": "Eyes looking upward"
+    },
+    {
+      "source": "07_serious.png",
+      "file": "07_eyes_down.png",
+      "visible_action": "eyes_down",
+      "observation": "Eyes and chin directed down"
+    },
+    {
+      "source": "08_glance_right.png",
+      "file": "08_neutral_front_alternate.png",
+      "visible_action": "neutral_front_alternate",
+      "observation": "Neutral frontal portrait; duplicate action"
+    },
+    {
+      "source": "09_glance_left.png",
+      "file": "09_side_gaze_image_right_alternate.png",
+      "visible_action": "side_gaze_image_right_alternate",
+      "observation": "Eyes looking toward image right; duplicate action"
+    },
+    {
+      "source": "10_raised_eyebrows_surprised.png",
+      "file": "10_surprised_brows_raised.png",
+      "visible_action": "surprised_brows_raised",
+      "observation": "Eyes wide, brows raised, mouth open"
+    },
+    {
+      "source": "11_speaking_mouth_open.png",
+      "file": "11_shoulder_shrug.png",
+      "visible_action": "shoulder_shrug",
+      "observation": "Shoulders raised, slight smile; NOT speaking"
+    },
+    {
+      "source": "12_shrug.png",
+      "file": "12_neutral_front_different_identity.png",
+      "visible_action": "neutral_front_different_identity",
+      "observation": "Neutral frontal pose; apparent identity and clothing differences"
+    },
+    {
+      "source": "13_sad.png",
+      "file": "13_sad.png",
+      "visible_action": "sad",
+      "observation": "Sad expression, inner brow raised, lips downturned"
+    },
+    {
+      "source": "14_eyes_closed_blink.png",
+      "file": "14_eyes_closed.png",
+      "visible_action": "eyes_closed",
+      "observation": "Eyes closed, gentle smile; could be blink reference"
+    },
+    {
+      "source": "15_soft_smile.png",
+      "file": "15_head_down.png",
+      "visible_action": "head_down",
+      "observation": "Head and gaze lowered, not soft smile"
+    }
+  ]
+}

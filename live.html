@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0b1119">
+<title>Live avatar — Living Avatar Engine</title>
+<link rel="stylesheet" href="./src/live/live.css">
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.186/build/three.module.js/+esm",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.186/examples/jsm/",
+  "three/examples/jsm/": "https://cdn.jsdelivr.net/npm/three@0.186/examples/jsm/",
+  "jszip": "https://cdn.jsdelivr.net/npm/jszip@3.10.1/+esm",
+  "@myned-ai/gsplat-flame-avatar-renderer": "https://cdn.jsdelivr.net/npm/@myned-ai/gsplat-flame-avatar-renderer@1.4.0/dist/gsplat-flame-avatar-renderer.esm.min.js",
+  "talkinghead": "https://cdn.jsdelivr.net/npm/@met4citizen/talkinghead@1.8/modules/talkinghead.mjs"
+} }
+</script>
+</head>
+<body data-state="off">
+<main class="app">
+  <section class="stage" aria-label="Animated avatar">
+    <div id="avatar"></div>
+    <div class="stage-top">
+      <span class="identity"><span class="dot"></span><span id="characterName">Avatar</span> <small id="characterNote"></small></span>
+      <span class="pill" id="status" aria-live="polite">Not connected</span>
+    </div>
+    <video id="selfView" class="self-view" autoplay muted playsinline hidden aria-label="Your camera"></video>
+    <div class="stage-bottom"><span>lip-sync: <b id="viseme">—</b></span><span id="cues">0 nods · 0 beats</span><span id="seen"></span><span id="rate">— fps</span></div>
+  </section>
+  <section class="panel">
+    <span class="eyebrow">LIVE AVATAR · PHASE 2</span>
+    <h1>Talk to her.</h1>
+    <p class="lead">The face is drawn on your device and the mouth follows the sound of the voice, whichever speech model produces it.</p>
+    <div class="actions">
+      <button type="button" class="primary" data-mode="talk">Start conversation</button>
+      <button type="button" data-mode="listen">Listen to me</button>
+      <button type="button" data-mode="synthetic">Play test voice</button>
+    </div>
+    <label class="toggle"><input type="checkbox" id="camera" checked> Let her see me (camera)</label>
+    <p class="note" id="note" aria-live="polite"></p>
+    <div class="dialogue">
+      <div><span class="speaker">YOU</span><p id="userText">—</p></div>
+      <div><span class="speaker her">HER</span><p id="agentText">—</p></div>
+    </div>
+    <p class="fine">Start conversation uses OpenAI Realtime through the local server and is billed by OpenAI. With the camera on, a still image is sent to OpenAI each time you start speaking. The other two buttons need no key and send nothing anywhere. The face is drawn on your device.</p>
+  </section>
+</main>
+<script type="module" src="./src/live/live-app.js"></script>
+</body>
+</html>

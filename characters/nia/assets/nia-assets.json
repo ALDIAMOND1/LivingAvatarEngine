@@ -1,0 +1,25 @@
+{
+  "characterId": "nia-001",
+  "source": "Original synthetic Nia selected from character collection; neutral from matching posed contact sheet",
+  "width": 512,
+  "height": 512,
+  "patchY": 155,
+  "patchHeight": 102,
+  "patchStates": [
+    "blink",
+    "gazeRight",
+    "gazeLeft"
+  ],
+  "atlasFormat": "stacked transparent photo eye overlays",
+  "eyeCenters": [
+    [
+      198,
+      205
+    ],
+    [
+      309,
+      205
+    ]
+  ],
+  "qualityLevel": "proof-of-concept; no 3D rig yet"
+}

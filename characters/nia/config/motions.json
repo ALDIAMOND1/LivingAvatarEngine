@@ -1,0 +1,209 @@
+{
+  "schemaVersion": "0.1.0",
+  "units": {
+    "angle": "degrees",
+    "normalized": "[-1,1]",
+    "duration": "milliseconds",
+    "interval": "seconds"
+  },
+  "params": {
+    "gazeX": {
+      "min": -1,
+      "max": 1,
+      "default": 0
+    },
+    "gazeY": {
+      "min": -1,
+      "max": 1,
+      "default": 0
+    },
+    "blinkLeft": {
+      "min": 0,
+      "max": 1,
+      "default": 0
+    },
+    "blinkRight": {
+      "min": 0,
+      "max": 1,
+      "default": 0
+    },
+    "headYaw": {
+      "min": -5,
+      "max": 5,
+      "default": 0
+    },
+    "headPitch": {
+      "min": -4,
+      "max": 4,
+      "default": 0
+    },
+    "headRoll": {
+      "min": -4,
+      "max": 4,
+      "default": 0
+    },
+    "breath": {
+      "min": -1,
+      "max": 1,
+      "default": 0
+    },
+    "smile": {
+      "min": 0,
+      "max": 1,
+      "default": 0.12
+    },
+    "browRaise": {
+      "min": -1,
+      "max": 1,
+      "default": 0
+    },
+    "jawOpen": {
+      "min": 0,
+      "max": 1,
+      "default": 0
+    },
+    "lipRound": {
+      "min": 0,
+      "max": 1,
+      "default": 0
+    },
+    "lipSpread": {
+      "min": 0,
+      "max": 1,
+      "default": 0
+    }
+  },
+  "motions": {
+    "blink": {
+      "triggers": [
+        "idle_scheduler",
+        "voice.command.blink"
+      ],
+      "durationMs": [
+        110,
+        240
+      ],
+      "intervalSeconds": [
+        2.4,
+        6
+      ],
+      "doubleBlinkProbability": 0.08,
+      "asymmetryAmount": 0.06,
+      "easing": "bell_curve"
+    },
+    "gaze": {
+      "triggers": [
+        "idle_scheduler",
+        "listening",
+        "voice.command.look"
+      ],
+      "holdMs": [
+        850,
+        4200
+      ],
+      "saccadeMs": [
+        90,
+        220
+      ],
+      "headLagMs": [
+        160,
+        400
+      ],
+      "ranges": {
+        "horizontal": [
+          -0.7,
+          0.7
+        ],
+        "vertical": [
+          -0.25,
+          0.25
+        ]
+      },
+      "rule": "eyes move before head"
+    },
+    "headTilt": {
+      "triggers": [
+        "voice.command.tilt",
+        "listening_emphasis"
+      ],
+      "durationMs": [
+        400,
+        1100
+      ],
+      "angleDeg": [
+        -4,
+        4
+      ],
+      "rule": "tiny head roll; do not rotate an entire flat image as final product"
+    },
+    "nod": {
+      "triggers": [
+        "voice.command.nod",
+        "listening_ack"
+      ],
+      "durationMs": [
+        420,
+        900
+      ],
+      "pitchDeg": [
+        1,
+        3.3
+      ],
+      "repetitions": [
+        1,
+        2
+      ]
+    },
+    "breath": {
+      "triggers": [
+        "idle_scheduler"
+      ],
+      "periodSeconds": [
+        3.2,
+        5
+      ],
+      "amplitudeNormalized": [
+        0.01,
+        0.045
+      ],
+      "rule": "subtle shoulders/neck; no whole-photo bobbing as final"
+    },
+    "microSmile": {
+      "triggers": [
+        "idle_scheduler",
+        "voice.command.smile"
+      ],
+      "intensity": [
+        0.06,
+        0.3
+      ],
+      "fadeMs": [
+        400,
+        1000
+      ]
+    },
+    "speechHeadEmphasis": {
+      "triggers": [
+        "audio.prosody"
+      ],
+      "pitchDeg": [
+        0,
+        1.5
+      ],
+      "rule": "few low-frequency movements; independent of mouth motion"
+    },
+    "audioVisemes": {
+      "triggers": [
+        "audio.pcm"
+      ],
+      "status": "not_implemented",
+      "rule": "must use actual speech audio timing, not arbitrary mouth flapping"
+    }
+  },
+  "scheduler": {
+    "deterministicSeedForTests": 246810,
+    "maxConcurrentHeadGestures": 1,
+    "avoidExactRepeats": true,
+    "avoidMovingWhilePaused": true
+  }
+}

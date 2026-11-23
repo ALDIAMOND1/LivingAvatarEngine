@@ -1,0 +1,64 @@
+{
+  "schemaVersion": "0.1.0",
+  "characterId": "nia-001",
+  "assetRoot": "assets",
+  "assets": [
+    {
+      "id": "originalPortrait",
+      "path": "assets/portrait/nia-master.webp",
+      "required": true,
+      "status": "ready",
+      "source": "ORIGINAL_SYNTHETIC_NIA",
+      "description": "Nia 512x512 neutral studio portrait"
+    },
+    {
+      "id": "eyePoseAtlas",
+      "path": "assets/face/nia-eye-atlas.webp",
+      "required": true,
+      "status": "ready",
+      "source": "ORIGINAL_SYNTHETIC_NIA",
+      "description": "Feathered photographic Nia blink, gaze-right and gaze-left strips"
+    },
+    {
+      "id": "neutralTexture",
+      "path": "assets/face/neutral.ktx2",
+      "required": true,
+      "status": "missing",
+      "source": "OFFLINE_PREP",
+      "description": "Future expressive facial texture for real 3D/2.5D rig"
+    },
+    {
+      "id": "faceGeometry",
+      "path": "assets/face/face.glb",
+      "required": true,
+      "status": "missing",
+      "source": "OFFLINE_PREP",
+      "description": "Future head mesh with depth, eyelid rig and natural occlusions"
+    },
+    {
+      "id": "speechMouth",
+      "path": "assets/face/mouth-atlas.ktx2",
+      "required": false,
+      "status": "missing",
+      "source": "OFFLINE_PREP",
+      "description": "Future genuine audio-viseme mouth, teeth and jaw states"
+    }
+  ],
+  "cache": {
+    "policy": "bounded_lru",
+    "startup": [
+      "originalPortrait",
+      "eyePoseAtlas"
+    ],
+    "compressedMotionCacheTargetMB": 16,
+    "decoderFramesTargetMB": 48,
+    "disposeDecodedUnused": true,
+    "prefetchWhenIdle": true,
+    "notes": "Budget is provisional and must be verified on hardware"
+  },
+  "network": {
+    "initialMode": "local_files",
+    "futureMode": "cdn_http_range_or_chunk_manifest",
+    "neverDownloadEntireMotionLibraryAtStartup": true
+  }
+}

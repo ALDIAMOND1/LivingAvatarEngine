@@ -1,0 +1,121 @@
+{
+  "schemaVersion": "0.1.0",
+  "default": "idle",
+  "states": {
+    "idle": {
+      "description": "Present and quietly alive",
+      "allowedMotion": [
+        "breath",
+        "blink",
+        "micro_saccade",
+        "gaze_drift",
+        "head_stabilization",
+        "micro_smile"
+      ],
+      "mouth": "closed_relaxed"
+    },
+    "listening": {
+      "description": "Microphone/VAD indicates human speech",
+      "allowedMotion": [
+        "breath",
+        "blink",
+        "attentive_gaze",
+        "subtle_ack_nod"
+      ],
+      "mouth": "closed_relaxed"
+    },
+    "thinking": {
+      "description": "Speech ended; system processing",
+      "allowedMotion": [
+        "breath",
+        "blink",
+        "soft_gaze_reposition"
+      ],
+      "mouth": "closed_relaxed"
+    },
+    "speaking": {
+      "description": "TTS/audio response audible",
+      "allowedMotion": [
+        "breath",
+        "blink",
+        "speech_gaze",
+        "speech_head_emphasis",
+        "audio_visemes"
+      ],
+      "mouth": "audio_driven"
+    },
+    "executing_command": {
+      "description": "Voice command gesture temporarily active",
+      "allowedMotion": [
+        "blink",
+        "gaze",
+        "head",
+        "expression"
+      ],
+      "mouth": "contextual"
+    },
+    "error": {
+      "description": "Microphone permission, recognizer, audio or renderer failure",
+      "allowedMotion": [
+        "blink",
+        "breath"
+      ],
+      "mouth": "closed_relaxed"
+    }
+  },
+  "transitions": [
+    {
+      "from": "idle",
+      "to": "listening",
+      "event": "vad.speech_started"
+    },
+    {
+      "from": "listening",
+      "to": "thinking",
+      "event": "vad.speech_ended"
+    },
+    {
+      "from": "thinking",
+      "to": "speaking",
+      "event": "assistant.audio_started"
+    },
+    {
+      "from": "speaking",
+      "to": "idle",
+      "event": "assistant.audio_finished"
+    },
+    {
+      "from": "*",
+      "to": "executing_command",
+      "event": "voice.intent_motion"
+    },
+    {
+      "from": "executing_command",
+      "to": "idle",
+      "event": "gesture.complete",
+      "resumePreviousState": true
+    },
+    {
+      "from": "*",
+      "to": "error",
+      "event": "engine.error"
+    },
+    {
+      "from": "error",
+      "to": "idle",
+      "event": "engine.recovered"
+    }
+  ],
+  "priority": [
+    "safety_stop",
+    "user_spoken_command",
+    "speaking_visemes",
+    "listening_attention",
+    "ambient_idle"
+  ],
+  "interruptibility": {
+    "speechCanBeInterrupted": true,
+    "gestureCanBeInterrupted": true,
+    "microblinkCanComplete": true
+  }
+}

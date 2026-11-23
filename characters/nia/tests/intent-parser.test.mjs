@@ -1,0 +1,13 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import { parseVoiceIntent } from '../intent-parser.mjs';
+const voice=JSON.parse(readFileSync(new URL('../config/voice.json',import.meta.url),'utf8'));
+test('empty transcript',()=>assert.equal(parseVoiceIntent('',voice).kind,'empty'));
+test('look at camera',()=>assert.equal(parseVoiceIntent('Please look at the camera.',voice).id,'look_at_me'));
+test('look right',()=>assert.equal(parseVoiceIntent('Can you look to your right?',voice).id,'look_right'));
+test('nod',()=>assert.equal(parseVoiceIntent('Please nod!',voice).id,'nod'));
+test('smile',()=>assert.equal(parseVoiceIntent('Give me a smile.',voice).id,'smile'));
+test('stop moving',()=>assert.equal(parseVoiceIntent('Stay still please',voice).id,'stop_moving'));
+test('negation is not command',()=>assert.equal(parseVoiceIntent("Don't smile.",voice).kind,'dialogue'));
+test('question is dialogue',()=>assert.equal(parseVoiceIntent('What is the weather?',voice).kind,'dialogue'));

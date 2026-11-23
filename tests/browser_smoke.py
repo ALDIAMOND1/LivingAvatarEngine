@@ -1,0 +1,25 @@
+from playwright.sync_api import sync_playwright
+from pathlib import Path
+root=Path(r'C:\Users\aldia\Downloads\LivingAvatarEngine')
+with sync_playwright() as p:
+    browser=p.chromium.launch(channel='msedge',headless=True)
+    page=browser.new_page(viewport={'width':1280,'height':900},device_scale_factor=1)
+    errors=[]
+    page.on('pageerror',lambda e:errors.append(str(e)))
+    response=page.goto('http://127.0.0.1:8765/',wait_until='domcontentloaded')
+    page.wait_for_timeout(1600)
+    print('HTTP',response.status,'TITLE',page.title())
+    print('APP',page.locator('h1').inner_text())
+    print('RENDERER_READY',page.evaluate('Boolean(window.__AVA_DEBUG?.renderer?.ready)'))
+    print('ATLAS_SIZE',page.evaluate('[window.__AVA_DEBUG?.renderer?.atlas?.naturalWidth,window.__AVA_DEBUG?.renderer?.atlas?.naturalHeight]'))
+    print('SPEECH_RECOGNITION_AVAILABLE',page.evaluate('Boolean(window.SpeechRecognition || window.webkitSpeechRecognition)'))
+    print('BASE_FPS',page.locator('#fps').inner_text())
+    print('ERRORS',errors)
+    page.screenshot(path=str(root/'ava-preview-test.png'),full_page=True)
+    page.evaluate('window.__AVA_DEBUG.motion.startBlink()')
+    page.wait_for_timeout(95)
+    page.screenshot(path=str(root/'ava-blink-test.png'),full_page=True)
+    page.evaluate("window.__AVA_DEBUG.motion.command({type:'gaze',targetX:.65})")
+    page.wait_for_timeout(400)
+    print('GAZE_TARGET',page.evaluate('window.__AVA_DEBUG.motion.gaze'))
+    browser.close()
