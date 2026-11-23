@@ -35,15 +35,20 @@ await import('../server.mjs');
   const path = await import('node:path'); const { spawn } = await import('node:child_process'); const { fileURLToPath } = await import('node:url');
   const here = path.dirname(fileURLToPath(import.meta.url));
   const dir = process.env.LIVE_FACE_DIR || path.resolve(here, '..', '..', 'lite-avatar-test');
-  const python = path.join(dir, 'venv', 'Scripts', 'python.exe'), repo = path.join(dir, 'lite-avatar');
-  const avatar = process.env.LIVE_FACE_AVATAR || path.join(dir, 'sample', 'preload');
-  if (fs.existsSync(python) && fs.existsSync(repo) && fs.existsSync(avatar)) {
-    const child = spawn(python, [path.join(here, 'face-service', 'face_service.py'), '--repo', repo, '--avatar', avatar,
+  // Nia's own video avatar ships with the project and needs only a Python with
+  // onnxruntime, opencv-python, numpy and websockets (LIVE_FACE_PYTHON, else
+  // the LiteAvatar test environment, else "python" on the PATH).
+  const venv = path.join(dir, 'venv', 'Scripts', 'python.exe');
+  const python = process.env.LIVE_FACE_PYTHON || (fs.existsSync(venv) ? venv : 'python');
+  const avatar = process.env.LIVE_FACE_AVATAR || path.resolve(here, '..', 'characters', 'nia', 'assets', 'video');
+  if (fs.existsSync(path.join(avatar, 'feathertalk_144.onnx'))) {
+    const child = spawn(python, [path.join(here, 'face-service', 'nia_service.py'), '--avatar', avatar,
       '--origin', `http://127.0.0.1:${process.env.NIA_PORT || 8766}`], { stdio: 'inherit' });
+    child.on('error', err => console.log(`Face service could not start (${err.message}). It needs Python with onnxruntime, opencv-python, numpy and websockets.`));
     child.on('exit', code => console.log(`face service stopped (code ${code}).`));
     process.on('exit', () => child.kill());
     for (const sig of ['SIGINT', 'SIGTERM']) process.on(sig, () => { child.kill(); process.exit(0); });
-  } else console.log('Face service not started: no LiteAvatar folder found (set LIVE_FACE_DIR).');
+  } else console.log('Face service not started: characters/nia/assets/video is missing.');
 }
 
 // Simli (hosted video face) session tokens. The Simli key is read from a second

@@ -26,11 +26,11 @@ export const characters = {
     },
   },
   // Video face made on this computer's processor by the local face service
-  // (live.html?character=video). Uses LiteAvatar's sample avatar until Nia has
-  // her own avatar in that format.
+  // (live.html?character=video): real video frames of Nia with the mouth
+  // repainted by her own trained model (tools/face-service/nia_service.py).
   video: {
-    name: 'Sample avatar',
-    note: 'Video face drawn on this computer, no graphics card (LiteAvatar sample, not Nia yet).',
+    name: 'Nia',
+    note: 'Her own video face, drawn on this computer with no graphics card.',
     renderer: 'video',
     avatar: { delaySec: 0.95 },
   },

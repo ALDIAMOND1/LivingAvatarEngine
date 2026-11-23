@@ -102,4 +102,4 @@ Her face is generated as video on Simli's servers from her voice and streamed ba
 
 ## Video face made on this computer — `live.html?character=video`
 
-Real video frames of an avatar with the mouth repainted to match her voice, produced by a local service with no graphics card and no hosted service. Set-up, measured results and limits are in [tools/face-service/README.md](tools/face-service/README.md). In short: the picture quality is photo-real, but on the 2015 i7 this was built on it is not fast enough to run live; it is expected to run live on a PC with a graphics card (untested), and Nia does not yet exist in this format.
+Real video frames of an avatar with the mouth repainted to match her voice, produced by a local service with no graphics card and no hosted service. Set-up, measured results and limits are in [tools/face-service/README.md](tools/face-service/README.md). In short: this is now Nia herself, with her own trained mouth model, running at a full 25 frames a second on a 2015 i7 with no graphics card, and her voice held back about one second so lips and sound stay together. A full live call in this mode has not been tested yet.

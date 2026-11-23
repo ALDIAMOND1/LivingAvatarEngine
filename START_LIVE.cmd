@@ -8,7 +8,8 @@ set "SIMLIFILE=%USERPROFILE%\OneDrive\Desktop\SIMLI KEY.txt"
 curl.exe -fsS --max-time 2 http://127.0.0.1:8766/api/status >nul 2>&1
 if errorlevel 1 (
   start "Live avatar server" /D "%~dp0" cmd.exe /k node tools\start-live.mjs "%KEYFILE%" "%SIMLIFILE%"
-  timeout /t 3 /nobreak >nul
+  timeout /t 8 /nobreak >nul
 )
-start "" "http://127.0.0.1:8766/live.html"
+rem Nia's video face. For the older 3D head use live.html without "?character=video".
+start "" "http://127.0.0.1:8766/live.html?character=video"
 endlocal

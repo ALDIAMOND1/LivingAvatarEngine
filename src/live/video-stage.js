@@ -33,6 +33,7 @@ export class VideoStage extends EventTarget {
     this.g = this.canvas.getContext('2d');
     this.container.append(this.canvas);
     await this.connect();
+    if (this.info.latency) this.delay = this.info.latency + 0.12;
     // Two audio paths: a 16 kHz one that feeds the service, and a full-quality one for the speakers.
     this.capCtx = new AudioContext({ sampleRate: RATE });
     await this.capCtx.audioWorklet.addModule('./src/live/pcm-worklet.js');
@@ -53,7 +54,24 @@ export class VideoStage extends EventTarget {
       requestAnimationFrame(tick);
     };
     requestAnimationFrame(tick);
+    await this.calibrate();
     this.ready = true;
+  }
+
+  // Before she is allowed to speak, time the real path once: how long after a
+  // moment of sound does its frame arrive on this computer? Her voice is then
+  // held back by exactly that (plus a small margin), so the first word and the
+  // first lip movement land together instead of the voice running ahead.
+  async calibrate() {
+    this.lipsyncStatus = 'video mouth (getting her ready)';
+    this.probe = []; const until = performance.now() + 2200;
+    while (performance.now() < until || this.probe.length < 12) {
+      if (performance.now() > until + 6000) break;             // never hang the page on a slow start
+      await new Promise(r => setTimeout(r, 100));
+    }
+    const lag = this.probe.slice(5).sort((a, b) => a - b); this.probe = null;
+    const worst = lag.length ? lag[Math.floor(lag.length * 0.95)] / 1000 : 0;
+    this.setDelay(Math.min(2.4, Math.max((this.info.latency ?? 0.8) + 0.25, worst + 0.32)));
   }
 
   connect() {
@@ -94,10 +112,11 @@ export class VideoStage extends EventTarget {
   arrive(frame) {
     if (frame.t < 0 || this.anchor === null) { this.show(frame); return; }
     const now = performance.now(), slack = this.dueAt(frame) - now;
+    this.probe?.push(now - (this.anchor + frame.t * 1000));
     // Frames that keep arriving after their moment mean this computer needs a longer head start.
     this.slackMin = Math.min(this.slackMin, slack);
-    if (now - this.slackAt > 2000) {
-      if (this.slackMin < 40 && this.delay < 2.4) this.setDelay(this.delay + Math.min(0.5, (40 - this.slackMin) / 1000 + 0.1));
+    if (now - this.slackAt > 600) {
+      if (this.slackMin < 30 && this.delay < 2.4) this.setDelay(this.delay + Math.min(0.5, (40 - this.slackMin) / 1000 + 0.1));
       this.slackMin = Infinity; this.slackAt = now;
     }
     this.queue.push(frame);
