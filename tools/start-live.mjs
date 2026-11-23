@@ -29,6 +29,23 @@ if (file && !process.env.OPENAI_API_KEY && !loadKey()) {
 process.env.NIA_REALTIME_MODEL ||= 'gpt-realtime-2.1';
 await import('../server.mjs');
 
+// Local face service (live.html?character=video): started only if the
+// LiteAvatar test folder exists next to this project, or LIVE_FACE_DIR points to it.
+{
+  const path = await import('node:path'); const { spawn } = await import('node:child_process'); const { fileURLToPath } = await import('node:url');
+  const here = path.dirname(fileURLToPath(import.meta.url));
+  const dir = process.env.LIVE_FACE_DIR || path.resolve(here, '..', '..', 'lite-avatar-test');
+  const python = path.join(dir, 'venv', 'Scripts', 'python.exe'), repo = path.join(dir, 'lite-avatar');
+  const avatar = process.env.LIVE_FACE_AVATAR || path.join(dir, 'sample', 'preload');
+  if (fs.existsSync(python) && fs.existsSync(repo) && fs.existsSync(avatar)) {
+    const child = spawn(python, [path.join(here, 'face-service', 'face_service.py'), '--repo', repo, '--avatar', avatar,
+      '--origin', `http://127.0.0.1:${process.env.NIA_PORT || 8766}`], { stdio: 'inherit' });
+    child.on('exit', code => console.log(`face service stopped (code ${code}).`));
+    process.on('exit', () => child.kill());
+    for (const sig of ['SIGINT', 'SIGTERM']) process.on(sig, () => { child.kill(); process.exit(0); });
+  } else console.log('Face service not started: no LiteAvatar folder found (set LIVE_FACE_DIR).');
+}
+
 // Simli (hosted video face) session tokens. The Simli key is read from a second
 // private text file and never reaches the browser; the page only gets a
 // short-lived session token. Local only, and only the live page may call it.

@@ -25,6 +25,15 @@ export const characters = {
       mouthGain: 1,        // how wide the mouth opens for a given sound
     },
   },
+  // Video face made on this computer's processor by the local face service
+  // (live.html?character=video). Uses LiteAvatar's sample avatar until Nia has
+  // her own avatar in that format.
+  video: {
+    name: 'Sample avatar',
+    note: 'Video face drawn on this computer, no graphics card (LiteAvatar sample, not Nia yet).',
+    renderer: 'video',
+    avatar: { delaySec: 0.95 },
+  },
   // Hosted video face (live.html?character=hosted). Uses one of Simli's stock
   // faces for the trial; a custom face from Nia's photo needs a paid Simli plan.
   hosted: {

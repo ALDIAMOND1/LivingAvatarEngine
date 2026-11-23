@@ -99,3 +99,7 @@ Her face is generated as video on Simli's servers from her voice and streamed ba
 - Sessions are capped at 10 minutes and close after 2 minutes idle, to protect the free minutes.
 - Status: page, SDK load, token service and the missing-key message are verified. A real session (picture, lip-sync, interruption, end call) has NOT been tested yet — it needs the key.
 - In this mode the behaviour engine's head/face pose is not used; movement comes from the video model.
+
+## Video face made on this computer — `live.html?character=video`
+
+Real video frames of an avatar with the mouth repainted to match her voice, produced by a local service with no graphics card and no hosted service. Set-up, measured results and limits are in [tools/face-service/README.md](tools/face-service/README.md). In short: the picture quality is photo-real, but on the 2015 i7 this was built on it is not fast enough to run live; it is expected to run live on a PC with a graphics card (untested), and Nia does not yet exist in this format.
